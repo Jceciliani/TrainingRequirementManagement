@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
+
+
+
+	<bean id="log" class="aop.LoggingAdvice"/>
+	<bean id="security" class="aop.SecurityAdvice"/>
+	<bean id="around" class="aop.AroundAdvice"/>
+	
+
+	<bean id="myproxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="emp"/>
+		<property name="interceptorNames">
+			<list>
+				<value>log</value>
+				<value>security</value>
+				<value>around</value>
+			</list>
+		</property>
+	</bean>	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<bean id="empPassport" class="pkg.Passport">
+		<constructor-arg index="0" value="9894859"/>
+		<constructor-arg index="1" value="USa"/>
+		<constructor-arg index="2" value="01-01-2030"/>
+	</bean>
+	<bean id="empAddress" class="pkg.Address">
+		<property name="street" value="19-Street"/>
+		<property name="city" value="Phoenix"/>
+		<property name="state" value="AZ"/>
+		<property name="pincode" value="85028"/>
+	</bean>
+	<bean id="emp" class="pkg.Employee" autowire="byName">
+		<property name="empId" value="700134"/>
+		<property name="empPassword" value="syntel123$"/>
+		<property name="empName" value="John"/>
+		<property name="empSalary" value="5000"/>
+		<property name="empHobbies">
+			<list>
+				<value>PPP</value>
+				<value>PVG</value>
+				<value>FOOT BALL</value>
+			</list>
+		</property>
+		
+	</bean>
+
+	
+</beans>
