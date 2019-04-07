@@ -1,0 +1,384 @@
+/*lblue 3c8dbc*/
+/*dblu 367fa9*/
+.scrolltable{
+  overflow: scroll;
+  height: 500px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 1s ease;
+  background-color: #3c8dbc;
+}
+
+.vendor-overlay {
+  position: absolute;
+  top: 23%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 77%;
+  width: 100%;
+  visibility: hidden;
+  /*opacity: 0;
+  transition: 1s ease;*/
+  background-color: #3c8dbc;
+}
+
+.lableClass {
+	
+	margin: 0px !important;
+	
+}
+
+.cardtext {
+  color: white;
+  position: absolute;
+  font-size: small;
+  text-align: center;
+  top: 10%;
+
+}
+.cardcontainer:hover .overlay {
+  opacity: 1;
+}
+/*navbar stuff*/
+
+.nb:hover{
+  color: #367fa9;
+}
+
+/*.navbar-nav .nav-item.active .nav-link,*/
+.navbar-nav .nav-item:hover .nav-link {
+    background-color: #367fa9;
+    border-radius: 10px;
+    color: white;
+}
+
+.navbar-nav .nav-item:hover .nav-link .dropdown{
+    background-color: #367fa9;
+    color: white;
+}
+
+::placeholder {
+    color: #9EC6DE;
+    opacity: 1; /* Firefox */
+  }
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+color: #9EC6DE;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+color: #9EC6DE;
+}
+
+/*lblue 3c8dbc*/
+/*dblu 367fa9*/
+/*--------------------- Vendor Icon cursor ---------------------*/
+
+#vendor_icon{
+  cursor: pointer;
+}
+
+.reset-a, .reset-a:hover, .reset-a:visited, .reset-a:focus, .reset-a:active  {
+  text-decoration: none;
+  color: inherit;
+  outline: 0;
+  cursor: auto;
+}
+
+.ttooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.ttooltip .ttooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+}
+
+.ttooltip:hover .ttooltiptext {
+  visibility: visible;
+}
+
+/* Yosuf ElSaadany
+3/14/2019 1:47 pm
+Integration of Modal- Styling
+*/
+
+/*--------------------- MODAL WITH STEPS FOR SPOC TO EXECUTE ---------------------*/
+/* Modal Content */
+.modal-content {
+  max-height: 85vh;
+  overflow-y: auto; 
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 95% !important;
+}
+
+/* Modal Title */
+.modal-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* Text weight for paragraphs */
+/* p:only-child {
+  font-weight: bold;
+} */
+
+#participants::-webkit-input-placeholder{
+  color:#999;
+}
+
+#participants::-moz-placeholder{
+  color:#999;
+}
+
+#participants:-ms-input-placeholder{
+  color:#999
+}
+
+#modalIcons:hover {
+  color: #3c8dbc;
+  cursor: pointer;
+}
+
+#modalIcons {
+  float: right;
+}
+
+/*------------------------------- ACCORDION ELEMENTS--------------------------------*/
+
+.card-header {
+  background-color: #3c8dbc;
+}
+
+.mb-0 {
+  color: white;
+  text-align: center;
+}
+
+/*----------------- PROGRESS CARD IN THE LEFT SIDE OF THE MODAL --------------------*/
+/* Assigned id to card in modal to avoid interference with the card Class that Nicolas has used */
+#card {
+  width: 100%;
+}
+
+/* Assigned id to card-body in modal to avoid interference with the card-body Class that Nicolas has used */
+#card-body {
+  background-color: #3c8dbc;
+  color: white;
+}
+
+/* Status Dots */
+.dot {
+  float: right;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+}
+
+/* Different Colors for status dots */
+#completed { background-color:green;}
+#inprogressdot { background-color:yellow;}
+#pending { background-color:red;}
+
+/*---------------------------- Modal for Approval Email ----------------------------*/
+
+/* Positioning of Modal as requested by Mahesh */
+#approval {
+  margin-left: 10%;
+  margin-top: 19%;
+}
+
+*, ::after, ::before {
+    /* box-sizing: border-box; */
+}
+
+
+/*--------------------------------------- DT TEAM ---------------------------------*/
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #367fa9;
+  float: right;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+
+}
+
+#sidebarOpenBtnDiv {
+  float: right;
+}
+
+.openbtn {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: white;
+  color: #0066a1;
+  padding-left: 50%;
+  padding: 5px 5px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+.exec-card
+{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 10px;
+    border-width: 3px;
+    border-color: green;
+    background-color: white;
+    width: 300px;
+    box-shadow: 10px 10px 5px #2d6b8e;
+}
+.exec-card-header:first-child
+{
+  background-color: white;
+  border-radius: 10px;
+}
+#exec-expand-btn
+{
+  background-color: transparent;
+  border-color: transparent;
+  float: right;
+}
+.exec-check-box
+{
+  background-color: transparent;
+  border-color: transparent;
+}
+
+/* Workflow view cards */
+.container input.wfcl {
+	width: 25px;	
+}
+
+div#exec-table .btn-wf {
+	text-align: center;
+	width: 100px;
+	padding: 0;
+	height: 2rem;
+}
+
+a.closebtn:hover {
+	color: black;
+}
+
+
+
+								<style>
+								#introText a {
+  color: #ff6600;
+  text-decoration: none;
+}
+
+#introText a:hover {
+  color: #ffb280;
+}
+
+#introText ul {
+  display: inline-block;
+}
+
+.date {
+  position: relative;
+}
+
+.date div {
+  /*visiblity: hidden; */
+  
+  display: none;
+  position: absolute;
+  top: 0;
+  left:100%;
+  margin-top: -30px; /* approx adjustment for arrow */
+  margin-left: 25px; /* approx adjustment for arrow */
+}
+
+.date a:hover + div {
+  cursor: pointer;
+  display: block;
+  /*visibility: visible; */
+  width: 180px;
+  line-height: 20px;
+  padding: 8px;
+  font-size: 14px;
+  text-align: center;
+  z-index: 999;
+  color: rgb(113, 157, 171);
+  background: rgb(255, 255, 255);
+  border: 4px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  text-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 1px;
+  box-shadow: #333 -4px 4px 16px 2px;
+  -webkit-transition: opacity 100ms ease-in;
+  -o-transition: opacity 100ms ease-in;
+  -moz-transition: opacity 100ms ease-in;
+  transition: opacity 100ms ease-in;
+  pointer-events: none;
+}
+
+.date div:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent #FFFFFF transparent transparent;
+  top: 22px;
+  left: -23px;
+}

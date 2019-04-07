@@ -1,0 +1,176 @@
+package trm.vt.dao.employee;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
+public class EmployeeDAO {
+    ApplicationContext context;
+    static JdbcTemplate temp;
+    
+    public EmployeeDAO() {
+        context = new ClassPathXmlApplicationContext("spring-config.xml");
+        temp = (JdbcTemplate) context.getBean("db");
+    }
+    
+    public Employee getEmployeeByUsername(String username){   
+        List<Employee> employee = temp.query("select * from employee where user_name=?",
+                new Object[]{username}, new EmployeeMapper());
+        return employee.get(0);
+    }
+    
+    public List<Employee> getAllEmployee() {
+        String sql = "select * from employee";
+        List<Employee> employeeList = temp.query(sql, new EmployeeMapper());
+        return employeeList; 
+    }
+    
+    public void insertEmployee(String last_name, String first_name, String user_name, String password, String phone_number, String email, String street, String city, String state, String country, String job_title, String vertical, String project, int pid){
+        
+        String sql = "insert into employee values(emp_id_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        
+        temp.update(sql, new Object[]{last_name,first_name,user_name,password,phone_number,email,street,city,state, country,job_title,vertical,project,pid});
+    }
+    
+    public void deleteEmployee(int employee_id){
+        
+        String sql = "delete from employee where employee_id = ?";
+        
+        temp.update(sql, new Object[]{employee_id});
+    }
+    
+    public void updateEmployee(int employee_id, String last_name, String first_name, String user_name, String password, String phone_number, String email, String street, String city, String state, String country, String job_title, String vertical, String project, int pid){
+        
+        String sql = "update employee set last_name = ?, first_name = ?, user_name = ?, password = ?, phone_number = ?, email = ?, street = ?, city = ?, state = ?, country = ?, job_title = ?, vertical = ?, project = ?, pid = ? where employee_id = ?";
+        
+        temp.update(sql, new Object[]{last_name,first_name,user_name,password,phone_number,email,street,city,state, country,job_title,vertical,project,pid,employee_id});
+    }
+    
+    public Employee getEmployee(int employee_id){
+        
+        String sql = "select * from employee where employee_id = ?";
+        
+        List<Employee> e = temp.query(sql, new Object[]{employee_id}, new EmployeeMapper());
+        
+        return e.get(0);
+    }
+    
+    public Employee getSpocDetails(String user_name){
+        
+        String sql = "select e.employee_id, e.first_name, e.last_name, e.vertical from employee e inner join spoc_master sm on e.employee_id = sm.spoc_emp_id where sm.spoc_vertical = e.vertical and e.user_name = ?";
+        
+        List<Employee> e = temp.query(sql, new Object[]{user_name}, new EmployeeMapper());
+        
+        return e.get(0);
+    }
+    
+    public int getEmployeeUserNameAndPassword(String user_name, String password){
+        
+        String sql = "select count(*) from employee where user_name = ? and password = ?";
+        
+        return temp.queryForInt(sql, new Object[]{user_name,password});
+    }
+    public Employee getEmployeeByUsername(int username){   
+        List<Employee> employee = temp.query("select * from employee where employee_id=?",
+                new Object[]{username}, new EmployeeMapper());
+        return employee.get(0);
+    }
+    
+    public static String listOfEmployees(){
+        String sql2 = "select * from employee";
+        List<Employee> data2 = temp.query(sql2, new EmployeeMapper());
+        
+        List<String> empList2 = new ArrayList<String>();
+        for(int i =0; i < data2.size(); i++){
+            empList2.add(Integer.toString(data2.get(i).getEmployee_id()));
+        }
+        
+        String[] empList3 = empList2.toArray(new String[empList2.size()]);
+        
+        
+        StringBuffer sb2 = new StringBuffer();
+        sb2.append("[");
+        int i = 0;
+        for(i=0; i<empList3.length; i++){
+            sb2.append("\"").append(empList3[i]).append("\"");
+            if(i+1 < empList3.length){
+                sb2.append(",");
+            }
+        }
+        sb2.append("]");
+        return sb2.toString();
+        
+        //return arrayListToList(allEmpIdstring(data)); 
+    }
+//  
+//  public static List<String> allEmpIdstring(List<Employee> empList){
+//      List<String> empList2 = new ArrayList<String>();
+//      for(int i =0; i < empList.size(); i++){
+//          empList2.add(Integer.toString(empList.get(i).getEmployee_id()));
+//      }
+//      return empList2;
+//  }
+//  
+//  public static String[] arrayListToList(List<String> list){
+//      String[] empList = list.toArray(new String[list.size()]);
+//      return empList;
+//  }
+//  
+//  public static String toJavascriptArray(String[] arr){
+//      
+//      StringBuffer sb = new StringBuffer();
+//      sb.append("[");
+//      for(int i=0; i<arr.length; i++){
+//          sb.append("\"").append(arr[i]).append("\"");
+//          if(i+1 < arr.length){
+//              sb.append(",");
+//          }
+//      }
+//      sb.append("]");
+//      return sb.toString();
+//  }
+    
+    public static void insertEmpToFiles(){
+        File file = new File("../allEmployees.txt");
+        try {
+            String a = new EmployeeDAO().listOfEmployees();
+            
+            System.out.println("break");
+            
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write(a);
+            fileWriter.flush();
+            fileWriter.close();
+            
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    
+    public static String readAndReturn() throws IOException{
+         FileReader fileReader;
+        try {
+            fileReader = new FileReader("C:/Users/syntel/git/Vendor_Training_Management_repo/src/allEmployee.txt");
+              String fileContents = "";
+              int i ;
+              while((i =  fileReader.read())!=-1){
+                  char ch = (char)i;
+                  fileContents = fileContents + ch; 
+              }
+              //System.out.println(fileContents);
+              return fileContents;
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
+            
+        }
+    public static void main(String arg[]) throws IOException{
+        System.out.println("hello");
+        System.out.println(readAndReturn());
+    }
+    
+}

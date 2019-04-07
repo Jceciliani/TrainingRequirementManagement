@@ -1,0 +1,155 @@
+@charset "ISO-8859-1";
+.modal-body {
+    			max-height: calc(100vh - 210px);
+    			overflow-y: scroll;
+	}
+			body { 
+				margin: auto; 
+				padding: auto; 
+				height: 100%; 
+				width: 100%;
+			}
+			
+			.btn_row{
+				display: flex;
+				justify-content: space-between;
+				margin:auto;
+				padding-right:35px;
+				padding-left:35px;
+				padding-top:45px;
+				padding-bottom:27.5px;
+			}
+
+			.navbar-nav{
+				flex-direction:row;
+			}
+			.nav-item{
+				padding-right:30px;
+			}
+			.my-card {
+				padding-right:20px;
+				padding-left:20px;
+				padding-top:10px;
+				padding-bottom:10px;
+			}
+			.card-body:hover {
+				box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+			}
+			.dropdown-item:hover{
+				background:lightgrey;
+				font-color:black;
+			}
+			.dropdown-toggle {
+				color: cornsilk;
+			}
+			#changePassword, #viewInfo {
+				padding-top: 100px;
+			}
+
+
+
+			#createNewRequest:focus{
+				-webkit-box-shadow: none !important;
+				box-shadow: none  !important;
+			}
+
+			.card-yellow .approve-btn{
+				display:none;
+			}
+			.card-green .approve-btn{
+				display:none;
+			}
+
+             .card-yellow .card-body{
+                 border-style:outset;
+                border-color:#3c8dbc;
+                border-width:5px;
+                
+            }
+
+			.card-green .card-body{
+				border-color:palegreen;
+                border-style:outset;
+                border-width:5px;
+                
+				
+			}
+			.card-red .card-body{
+				border-color:red ;
+                border-style:outset;
+                border-width:5px;
+                
+				
+			}
+			.my-list{
+			font:25px;
+			}
+
+			.mainContainer {
+			    height: auto !important; }
+			.approve-btn{
+				font-size:9.5;
+				padding-right:10px;
+			}
+			.my-contain{
+				min-height:65vh;
+			}
+			.popover-body{
+				width:100%;
+				max-height:35vh;
+				overflow-y:scroll;
+				white-space:nowrap;
+			}
+			.popover-header{ 
+				background: #3c8dbc;
+				color: white;
+			}
+			.modal-header{
+				color:white;
+			}
+			.modal {
+				padding-top: 4.5vh;
+			}
+			.first-td{
+			padding-right:15px;
+			}
+			.btn-primary
+	{
+   		 background-color: #3c8dbc;
+   		 border:none;
+    border-color: black;
+}
+.btn-success
+{
+    color: black;
+    border:palegreen;
+    background-color: palegreen;
+}
+.my-address{
+	color:peru;
+}
+.my-ppl{
+	color:#3c8dbc;
+}
+.my-pin, .my-cal{
+	color:red;
+}
+.my-teach{
+	color:#9400d3;
+}
+ .transition {
+            -webkit-transform: scale(1.05);
+            -moz-transform: scale(1.05);
+            -o-transform: scale(1.05);
+            transform: scale(1.05);
+            border-radius: 50px;
+            letter-spacing: 1px;
+            transform: perspective(1px) translateZ(0);
+            backface-visibility: hidden;
+        }
+        #createNewRequest {
+            -webkit-transition: all .5s ease-in-out;
+            -moz-transition: all .5s ease-in-out;
+            -o-transition: all .5s ease-in-out;
+            -ms-transition: all .5s ease-in-out;
+        }
